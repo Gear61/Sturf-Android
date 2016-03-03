@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Sturf</string>
+    <string name="view_my_profile">View my profile</string>
+    <string name="settings">Settings</string>
 </resources>
