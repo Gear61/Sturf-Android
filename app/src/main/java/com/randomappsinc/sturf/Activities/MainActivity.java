@@ -13,6 +13,7 @@ import com.randomappsinc.sturf.Utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends StandardActivity {
     @Bind(R.id.post_item) FloatingActionButton postItem;
@@ -22,9 +23,13 @@ public class MainActivity extends StandardActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         postItem.setImageDrawable(new IconDrawable(this, FontAwesomeIcons.fa_plus).colorRes(R.color.white));
+    }
+
+    @OnClick(R.id.post_item)
+    public void openItemForm() {
+        startActivity(new Intent(this, ItemFormActivity.class));
     }
 
     @Override

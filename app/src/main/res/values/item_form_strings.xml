@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="item_form">Item Form</string>
+    <string name="item_title">Item title</string>
+    <string name="item_description">Item description</string>
+
+    <string name="post_item">Post Item</string>
+</resources>
