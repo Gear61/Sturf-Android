@@ -7,32 +7,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:padding="@dimen/default_padding"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <com.rey.material.widget.Button
+            android:id="@+id/item_action"
+            android:layout_alignParentBottom="true"
+            style="@style/ripple_button_style"
+            app:rd_style="@style/button_ripple_attributes"/>
+
+        <ScrollView
+            android:layout_above="@+id/item_action"
+            android:padding="@dimen/default_padding"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/item_title"
-                android:hint="@string/item_title"
-                style="@style/text_input"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/item_description"
-                android:hint="@string/item_description"
-                style="@style/text_input"/>
+                <EditText
+                    android:id="@+id/item_title"
+                    android:hint="@string/item_title"
+                    style="@style/text_input"/>
 
-            <com.rey.material.widget.Button
-                android:id="@+id/item_action"
-                android:text="@string/post_item"
-                android:layout_marginTop="10dp"
-                style="@style/ripple_button_style"
-                app:rd_style="@style/button_ripple_attributes"/>
-        </LinearLayout>
-    </ScrollView>
+                <EditText
+                    android:id="@+id/item_description"
+                    android:hint="@string/item_description"
+                    style="@style/text_input"/>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

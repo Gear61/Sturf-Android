@@ -4,6 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/post_item"
+        android:title="@string/post_item"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/view_profile"
         android:title="@string/view_my_profile"
         app:showAsAction="ifRoom"/>
