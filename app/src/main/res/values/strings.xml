@@ -2,4 +2,7 @@
     <string name="app_name">Sturf</string>
     <string name="view_my_profile">View my profile</string>
     <string name="settings">Settings</string>
+
+    <string name="lost_and_found">Lost &amp; Found</string>
+    <string name="items">Items</string>
 </resources>
