@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.joanzapata.iconify.IconDrawable;
@@ -41,5 +42,12 @@ public class UIUtils {
                 new IconDrawable(MyApplication.getAppContext(), icon)
                         .colorRes(R.color.white)
                         .actionBarSize());
+    }
+
+    public static ArrayAdapter<String> createSpinnerAdapter(Context context, int arrayId) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item,
+                context.getResources().getStringArray(arrayId));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        return adapter;
     }
 }

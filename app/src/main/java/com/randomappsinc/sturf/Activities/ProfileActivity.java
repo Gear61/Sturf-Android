@@ -13,7 +13,7 @@ public class ProfileActivity extends StandardActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings);
+        setContentView(R.layout.profile);
         ButterKnife.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
