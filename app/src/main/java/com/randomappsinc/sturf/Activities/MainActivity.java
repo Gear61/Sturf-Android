@@ -4,14 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
-import com.joanzapata.iconify.fonts.FontAwesomeIcons;
+import com.joanzapata.iconify.fonts.IoniconsIcons;
 import com.randomappsinc.sturf.R;
 import com.randomappsinc.sturf.Utils.UIUtils;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends StandardActivity {
+    @Bind(R.id.search_input) EditText searchInput;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,12 +24,17 @@ public class MainActivity extends StandardActivity {
         ButterKnife.bind(this);
     }
 
+    @OnClick(R.id.clear_search)
+    public void clearSearch() {
+        searchInput.setText("");
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        UIUtils.loadMenuIcon(menu, R.id.post_item, FontAwesomeIcons.fa_plus);
-        UIUtils.loadMenuIcon(menu, R.id.view_profile, FontAwesomeIcons.fa_user);
-        UIUtils.loadMenuIcon(menu, R.id.settings, FontAwesomeIcons.fa_gear);
+        UIUtils.loadMenuIcon(menu, R.id.post_item, IoniconsIcons.ion_android_add);
+        UIUtils.loadMenuIcon(menu, R.id.view_profile, IoniconsIcons.ion_person);
+        UIUtils.loadMenuIcon(menu, R.id.settings, IoniconsIcons.ion_android_settings);
         return true;
     }
 

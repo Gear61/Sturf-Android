@@ -7,11 +7,10 @@ import android.support.design.widget.Snackbar;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.joanzapata.iconify.Icon;
 import com.joanzapata.iconify.IconDrawable;
-import com.joanzapata.iconify.fonts.FontAwesomeIcons;
 import com.randomappsinc.sturf.R;
 
 /**
@@ -37,17 +36,10 @@ public class UIUtils {
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public static void loadMenuIcon(Menu menu, int itemId, FontAwesomeIcons icon) {
+    public static void loadMenuIcon(Menu menu, int itemId, Icon icon) {
         menu.findItem(itemId).setIcon(
                 new IconDrawable(MyApplication.getAppContext(), icon)
                         .colorRes(R.color.white)
                         .actionBarSize());
-    }
-
-    public static ArrayAdapter<String> createSpinnerAdapter(Context context, int arrayId) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item,
-                context.getResources().getStringArray(arrayId));
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        return adapter;
     }
 }

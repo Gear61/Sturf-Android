@@ -5,7 +5,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.joanzapata.iconify.fonts.FontAwesomeIcons;
+import com.joanzapata.iconify.fonts.IoniconsIcons;
 import com.randomappsinc.sturf.R;
 import com.randomappsinc.sturf.Utils.UIUtils;
 
@@ -44,7 +44,7 @@ public class ItemFormActivity extends StandardActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.item_form_menu, menu);
         if (mode.equals(UPDATE)) {
-            UIUtils.loadMenuIcon(menu, R.id.delete_posting, FontAwesomeIcons.fa_plus);
+            UIUtils.loadMenuIcon(menu, R.id.delete_posting, IoniconsIcons.ion_android_delete);
         }
         else {
             menu.findItem(R.id.delete_posting).setVisible(false);

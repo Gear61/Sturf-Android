@@ -15,26 +15,16 @@
     <string name="category">Category</string>
     <string name="sub_category">Subcategory</string>
 
+    <string name="lost">Lost &amp; Found - Lost</string>
+    <string name="found">Lost &amp; Found - Found</string>
     <string-array name="category_options">
-        <item>@string/lost_and_found</item>
-        <item>@string/items</item>
-    </string-array>
-
-    <string name="lost">Lost</string>
-    <string name="found">Found</string>
-    <string-array name="lost_found_options">
         <item>@string/lost</item>
         <item>@string/found</item>
+        <item>@string/school_supplies</item>
+        <item>@string/household_items</item>
     </string-array>
 
-    <string name="school_supplies">School supplies</string>
     <string name="food_drink">Food/Drink</string>
     <string name="clothing">Clothing</string>
     <string name="furniture">Furniture</string>
-    <string-array name="items_options">
-        <item>@string/school_supplies</item>
-        <item>@string/food_drink</item>
-        <item>@string/clothing</item>
-        <item>@string/furniture</item>
-    </string-array>
 </resources>

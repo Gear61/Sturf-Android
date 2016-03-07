@@ -11,8 +11,8 @@
     <string name="send_email">Send email</string>
 
     <!-- Font Awesome Icons -->
-    <string name="email_icon">{fa-envelope}</string>
-    <string name="like_icon">{fa-thumbs-up}</string>
+    <string name="email_icon">{ion-email}</string>
+    <string name="like_icon">{ion-thumbsup}</string>
     <string-array name="settings_icons">
         <item>@string/email_icon</item>
         <item>@string/like_icon</item>
