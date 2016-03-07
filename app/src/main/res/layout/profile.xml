@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:padding="@dimen/default_padding">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -18,14 +19,38 @@
             android:src="@drawable/lost_and_found"/>
 
         <LinearLayout
+            android:layout_marginLeft="@dimen/default_padding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:text="Alex Chiou"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:text="@string/user_icon"
+                    style="@style/profile_icon"/>
+
+                <TextView
+                    android:id="@+id/user_name"
+                    style="@style/profile_text"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:text="@string/school_icon"
+                    style="@style/profile_icon"/>
+
+                <TextView
+                    android:id="@+id/school"
+                    style="@style/profile_text"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
