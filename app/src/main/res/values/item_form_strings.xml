@@ -2,14 +2,14 @@
 <resources>
     <string name="item_form">Item Form</string>
     <string name="title">Title</string>
-    <string name="description">Description</string>
+    <string name="tags">Tags</string>
     <string name="location">Location</string>
 
     <string name="post_item">Post Item</string>
     <string name="update_item">Update Item</string>
     <string name="delete_posting">Delete posting</string>
     
-    <string name="photo_icon">{fa-photo}</string>
+    <string name="photo_icon">{ion-image}</string>
     <string name="photo_instructions">Click here to add a photo</string>
 
     <string name="category">Category</string>
@@ -24,7 +24,42 @@
         <item>@string/household_items</item>
     </string-array>
 
-    <string name="food_drink">Food/Drink</string>
+    <string name="student_id">Student ID</string>
+    <string name="keys">Keys</string>
+    <string name="electronics">Electronics</string>
+    <string name="backpacks_bags">Backpacks/Bags</string>
     <string name="clothing">Clothing</string>
+    <string name="jewelry">Jewelry</string>
+    <string name="misc">Miscellaneous</string>
+    <string-array name="lost_and_found_options">
+        <item>@string/student_id</item>
+        <item>@string/keys</item>
+        <item>@string/electronics</item>
+        <item>@string/backpacks_bags</item>
+        <item>@string/clothing</item>
+        <item>@string/jewelry</item>
+        <item>@string/misc</item>
+    </string-array>
+
+    <string name="textbooks">Textbooks</string>
+    <string name="clickers">Clickers</string>
+    <string name="study_materials">Study materials</string>
+    <string name="stationary">Stationary</string>
+    <string-array name="school_supplies_options">
+        <item>@string/textbooks</item>
+        <item>@string/clickers</item>
+        <item>@string/study_materials</item>
+        <item>@string/stationary</item>
+    </string-array>
+
     <string name="furniture">Furniture</string>
+    <string name="kitchen_supplies">Kitchen supplies</string>
+    <string name="food_drink">Food/drink</string>
+    <string-array name="household_items_options">
+        <item>@string/furniture</item>
+        <item>@string/kitchen_supplies</item>
+        <item>@string/food_drink</item>
+    </string-array>
+
+    <string name="choose">Choose</string>
 </resources>

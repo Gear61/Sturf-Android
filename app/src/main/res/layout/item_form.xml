@@ -8,6 +8,8 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -57,23 +59,31 @@
                 </RelativeLayout>
 
                 <EditText
-                    android:id="@+id/item_title"
-                    android:hint="@string/title"
-                    android:singleLine="true"
+                    android:id="@+id/category"
+                    android:hint="@string/category"
+                    android:focusable="false"
                     style="@style/text_input"/>
 
                 <EditText
-                    android:id="@+id/item_description"
-                    android:gravity="top"
-                    android:hint="@string/description"
-                    android:lines="3"
+                    android:id="@+id/subcategory"
+                    android:hint="@string/sub_category"
+                    android:focusable="false"
+                    style="@style/text_input"/>
+
+                <EditText
+                    android:id="@+id/item_title"
+                    android:hint="@string/title"
                     style="@style/text_input"/>
 
                 <EditText
                     android:id="@+id/location"
                     android:hint="@string/location"
-                    android:singleLine="true"
-                    android:imeOptions="actionDone"
+                    style="@style/text_input"/>
+
+                <EditText
+                    android:id="@+id/tags"
+                    android:hint="@string/tags"
+                    android:singleLine="false"
                     style="@style/text_input"/>
             </LinearLayout>
         </ScrollView>

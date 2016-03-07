@@ -3,14 +3,19 @@ package com.randomappsinc.sturf.Activities;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.joanzapata.iconify.fonts.IoniconsIcons;
 import com.randomappsinc.sturf.R;
+import com.randomappsinc.sturf.Utils.ItemFormUtils;
 import com.randomappsinc.sturf.Utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by alexanderchiou on 3/2/16.
@@ -20,9 +25,13 @@ public class ItemFormActivity extends StandardActivity {
     public static final String ADD = "add";
     public static final String UPDATE = "update";
 
+    @Bind(R.id.category) EditText category;
+    @Bind(R.id.subcategory) EditText subcategory;
     @Bind(R.id.item_action) Button itemAction;
 
     private String mode;
+    private int currentCategoryIndex = -1;
+    private int currentSubcategoryIndex = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,44 @@ public class ItemFormActivity extends StandardActivity {
         else if (mode.equals(UPDATE)){
             itemAction.setText(R.string.update_item);
         }
+    }
+
+    @OnClick(R.id.category)
+    public void chooseCategory() {
+        new MaterialDialog.Builder(this)
+                .title(R.string.category)
+                .items(R.array.category_options)
+                .itemsCallbackSingleChoice(currentCategoryIndex, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                        currentCategoryIndex = which;
+                        category.setText(text);
+                        currentSubcategoryIndex = -1;
+                        subcategory.setText("");
+                        return true;
+                    }
+                })
+                .positiveText(R.string.choose)
+                .negativeText(android.R.string.no)
+                .show();
+    }
+
+    @OnClick(R.id.subcategory)
+    public void chooseSubCategory() {
+        new MaterialDialog.Builder(this)
+                .title(R.string.category)
+                .items(ItemFormUtils.getSubcategoryChoices(currentCategoryIndex))
+                .itemsCallbackSingleChoice(currentSubcategoryIndex, new MaterialDialog.ListCallbackSingleChoice() {
+                    @Override
+                    public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                        currentSubcategoryIndex = which;
+                        subcategory.setText(text);
+                        return true;
+                    }
+                })
+                .positiveText(R.string.choose)
+                .negativeText(android.R.string.no)
+                .show();
     }
 
     @Override
