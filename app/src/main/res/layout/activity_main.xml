@@ -10,6 +10,10 @@
         android:layout_height="50dp"
         android:background="@color/white">
 
+        <EditText
+            android:id="@+id/search_input"
+            style="@style/homepage_search"/>
+
         <com.joanzapata.iconify.widget.IconTextView
             android:text="@string/search_icon"
             style="@style/homepage_search_icon"/>
@@ -19,10 +23,6 @@
             android:text="@string/clear_icon"
             android:layout_gravity="end"
             style="@style/homepage_search_icon"/>
-
-        <EditText
-            android:id="@+id/search_input"
-            style="@style/homepage_search"/>
     </FrameLayout>
 
     <ScrollView

@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.joanzapata.iconify.fonts.IoniconsIcons;
+import com.randomappsinc.sturf.Constants;
 import com.randomappsinc.sturf.R;
+import com.randomappsinc.sturf.TagsCompletionView;
 import com.randomappsinc.sturf.Utils.ItemFormUtils;
 import com.randomappsinc.sturf.Utils.UIUtils;
 
@@ -28,6 +31,7 @@ public class ItemFormActivity extends StandardActivity {
     @Bind(R.id.category) EditText category;
     @Bind(R.id.subcategory) EditText subcategory;
     @Bind(R.id.item_action) Button itemAction;
+    @Bind(R.id.tags) TagsCompletionView tags;
 
     private String mode;
     private int currentCategoryIndex = -1;
@@ -47,6 +51,9 @@ public class ItemFormActivity extends StandardActivity {
         else if (mode.equals(UPDATE)){
             itemAction.setText(R.string.update_item);
         }
+
+        tags.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Constants.tags));
+        tags.allowDuplicates(false);
     }
 
     @OnClick(R.id.category)

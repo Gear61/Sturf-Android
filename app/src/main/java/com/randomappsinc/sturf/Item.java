@@ -1,15 +1,21 @@
 package com.randomappsinc.sturf;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by alexanderchiou on 3/4/16.
  */
-public class Item {
+public class Item implements Parcelable {
     private String imageUrl;
     private String title;
-    private String description;
     private String category;
     private String subcategory;
     private String location;
+    private List<String> tags;
 
     public String getImageUrl() {
         return imageUrl;
@@ -25,14 +31,6 @@ public class Item {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getCategory() {
@@ -58,4 +56,59 @@ public class Item {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    protected Item(Parcel in) {
+        imageUrl = in.readString();
+        title = in.readString();
+        category = in.readString();
+        subcategory = in.readString();
+        location = in.readString();
+        if (in.readByte() == 0x01) {
+            tags = new ArrayList<>();
+            in.readList(tags, String.class.getClassLoader());
+        } else {
+            tags = null;
+        }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(imageUrl);
+        dest.writeString(title);
+        dest.writeString(category);
+        dest.writeString(subcategory);
+        dest.writeString(location);
+        if (tags == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(tags);
+        }
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Item> CREATOR = new Parcelable.Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel in) {
+            return new Item(in);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
 }

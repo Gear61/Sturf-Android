@@ -21,12 +21,15 @@
 
         <ScrollView
             android:layout_above="@+id/item_action"
-            android:padding="@dimen/default_padding"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:scrollbars="none"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:layout_marginTop="@dimen/default_padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -80,10 +83,9 @@
                     android:hint="@string/location"
                     style="@style/text_input"/>
 
-                <EditText
+                <com.randomappsinc.sturf.TagsCompletionView
                     android:id="@+id/tags"
                     android:hint="@string/tags"
-                    android:singleLine="false"
                     style="@style/text_input"/>
             </LinearLayout>
         </ScrollView>
