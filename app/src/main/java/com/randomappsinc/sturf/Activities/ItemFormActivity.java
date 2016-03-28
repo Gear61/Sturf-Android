@@ -11,6 +11,7 @@ import android.widget.EditText;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.joanzapata.iconify.fonts.IoniconsIcons;
 import com.randomappsinc.sturf.Constants;
+import com.randomappsinc.sturf.Item;
 import com.randomappsinc.sturf.R;
 import com.randomappsinc.sturf.TagsCompletionView;
 import com.randomappsinc.sturf.Utils.ItemFormUtils;
@@ -25,17 +26,21 @@ import butterknife.OnClick;
  */
 public class ItemFormActivity extends StandardActivity {
     public static final String FORM_MODE_KEY = "formMode";
+    public static final String ITEM_KEY = "item";
     public static final String ADD = "add";
     public static final String UPDATE = "update";
 
     @Bind(R.id.category) EditText category;
     @Bind(R.id.subcategory) EditText subcategory;
+    @Bind(R.id.item_title) EditText title;
+    @Bind(R.id.location) EditText location;
     @Bind(R.id.item_action) Button itemAction;
     @Bind(R.id.tags) TagsCompletionView tags;
 
     private String mode;
     private int currentCategoryIndex = -1;
     private int currentSubcategoryIndex = -1;
+    private Item item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +55,19 @@ public class ItemFormActivity extends StandardActivity {
         }
         else if (mode.equals(UPDATE)){
             itemAction.setText(R.string.update_item);
+            item = getIntent().getParcelableExtra(ITEM_KEY);
+            loadItem();
         }
 
         tags.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Constants.tags));
         tags.allowDuplicates(false);
+    }
+
+    private void loadItem() {
+        category.setText(item.getCategory());
+        subcategory.setText(item.getSubcategory());
+        title.setText(item.getTitle());
+        location.setText(item.getLocation());
     }
 
     @OnClick(R.id.category)
@@ -78,20 +92,22 @@ public class ItemFormActivity extends StandardActivity {
 
     @OnClick(R.id.subcategory)
     public void chooseSubCategory() {
-        new MaterialDialog.Builder(this)
-                .title(R.string.category)
-                .items(ItemFormUtils.getSubcategoryChoices(currentCategoryIndex))
-                .itemsCallbackSingleChoice(currentSubcategoryIndex, new MaterialDialog.ListCallbackSingleChoice() {
-                    @Override
-                    public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                        currentSubcategoryIndex = which;
-                        subcategory.setText(text);
-                        return true;
-                    }
-                })
-                .positiveText(R.string.choose)
-                .negativeText(android.R.string.no)
-                .show();
+        if (!category.getText().toString().isEmpty()) {
+            new MaterialDialog.Builder(this)
+                    .title(R.string.sub_category)
+                    .items(ItemFormUtils.getSubcategoryChoices(currentCategoryIndex))
+                    .itemsCallbackSingleChoice(currentSubcategoryIndex, new MaterialDialog.ListCallbackSingleChoice() {
+                        @Override
+                        public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                            currentSubcategoryIndex = which;
+                            subcategory.setText(text);
+                            return true;
+                        }
+                    })
+                    .positiveText(R.string.choose)
+                    .negativeText(android.R.string.no)
+                    .show();
+        }
     }
 
     @Override

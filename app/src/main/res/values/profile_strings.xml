@@ -4,4 +4,8 @@
 
     <string name="user_icon">{ion-person}</string>
     <string name="school_icon">{ion-university}</string>
+
+    <string name="my_sturf">My Sturf</string>
+
+    <string name="no_sturf">You don\'t have any posted items.</string>
 </resources>

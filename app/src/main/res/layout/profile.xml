@@ -1,56 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
+    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="@dimen/default_padding">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@drawable/lost_and_found"/>
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <LinearLayout
-            android:layout_marginLeft="@dimen/default_padding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/default_padding">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@drawable/lost_and_found"/>
 
             <LinearLayout
+                android:layout_marginLeft="@dimen/default_padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical">
+                android:orientation="vertical">
 
-                <com.joanzapata.iconify.widget.IconTextView
-                    android:text="@string/user_icon"
-                    style="@style/profile_icon"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/user_name"
-                    style="@style/profile_text"/>
-            </LinearLayout>
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:text="@string/user_icon"
+                        style="@style/profile_icon"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical">
+                    <TextView
+                        android:id="@+id/user_name"
+                        style="@style/profile_text"/>
+                </LinearLayout>
 
-                <com.joanzapata.iconify.widget.IconTextView
-                    android:text="@string/school_icon"
-                    style="@style/profile_icon"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/school"
-                    style="@style/profile_text"/>
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:text="@string/school_icon"
+                        style="@style/profile_icon"/>
+
+                    <TextView
+                        android:id="@+id/school"
+                        style="@style/profile_text"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/app_blue"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="@string/my_sturf"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/no_sturf"
+            android:padding="35dp"
+            android:text="@string/no_sturf"
+            android:textColor="@color/gray_700"
+            android:textSize="26sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"/>
+
+        <ListView
+            android:id="@+id/my_sturf"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
-</LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/post_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"/>
+</android.support.design.widget.CoordinatorLayout>

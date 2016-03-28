@@ -7,87 +7,99 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:focusable="true"
-        android:focusableInTouchMode="true"
+    <ScrollView
+        android:layout_above="@+id/item_action"
+        android:paddingLeft="@dimen/default_padding"
+        android:paddingRight="@dimen/default_padding"
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.rey.material.widget.Button
-            android:id="@+id/item_action"
-            android:layout_alignParentBottom="true"
-            style="@style/ripple_button_style"
-            app:rd_style="@style/button_ripple_attributes"/>
-
-        <ScrollView
-            android:layout_above="@+id/item_action"
-            android:paddingLeft="@dimen/default_padding"
-            android:paddingRight="@dimen/default_padding"
-            android:scrollbars="none"
+        <LinearLayout
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_marginTop="@dimen/default_padding"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/default_padding"
+            <RelativeLayout
+                android:background="@drawable/text_input_border"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal">
+
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/photo_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
+                    android:text="@string/photo_icon"
+                    android:textColor="@color/app_blue"
+                    android:textSize="64sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/photo_icon"
+                    android:text="@string/photo_instructions"
+                    android:textColor="@color/app_blue"
+                    android:textSize="16sp"
+                    android:gravity="center_horizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/category"
+                android:hint="@string/category"
+                android:focusable="false"
+                style="@style/text_input"/>
+
+            <EditText
+                android:id="@+id/subcategory"
+                android:hint="@string/sub_category"
+                android:focusable="false"
+                style="@style/text_input"/>
+
+            <EditText
+                android:id="@+id/item_title"
+                android:hint="@string/title"
+                style="@style/text_input"/>
+
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:background="@drawable/text_input_border"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center_horizontal">
-
-                    <com.joanzapata.iconify.widget.IconTextView
-                        android:id="@+id/photo_icon"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="25dp"
-                        android:text="@string/photo_icon"
-                        android:textColor="@color/app_blue"
-                        android:textSize="64sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_below="@id/photo_icon"
-                        android:text="@string/photo_instructions"
-                        android:textColor="@color/app_blue"
-                        android:textSize="16sp"
-                        android:gravity="center_horizontal"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"/>
-                </RelativeLayout>
-
-                <EditText
-                    android:id="@+id/category"
-                    android:hint="@string/category"
-                    android:focusable="false"
-                    style="@style/text_input"/>
-
-                <EditText
-                    android:id="@+id/subcategory"
-                    android:hint="@string/sub_category"
-                    android:focusable="false"
-                    style="@style/text_input"/>
-
-                <EditText
-                    android:id="@+id/item_title"
-                    android:hint="@string/title"
-                    style="@style/text_input"/>
 
                 <EditText
                     android:id="@+id/location"
                     android:hint="@string/location"
+                    android:paddingRight="45dp"
                     style="@style/text_input"/>
 
-                <com.randomappsinc.sturf.TagsCompletionView
-                    android:id="@+id/tags"
-                    android:hint="@string/tags"
-                    style="@style/text_input"/>
-            </LinearLayout>
-        </ScrollView>
-    </RelativeLayout>
+                <com.joanzapata.iconify.widget.IconTextView
+                    android:id="@+id/location_icon"
+                    android:text="@string/location_icon"
+                    android:textColor="@color/app_blue"
+                    android:textSize="32dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:padding="10dp"/>
+            </FrameLayout>
+
+            <com.randomappsinc.sturf.TagsCompletionView
+                android:id="@+id/tags"
+                android:hint="@string/tags"
+                android:imeOptions="actionDone"
+                style="@style/text_input"/>
+
+            <com.rey.material.widget.Button
+                android:id="@+id/item_action"
+                android:layout_marginTop="10dp"
+                style="@style/ripple_button_style"
+                app:rd_style="@style/button_ripple_attributes"/>
+        </LinearLayout>
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

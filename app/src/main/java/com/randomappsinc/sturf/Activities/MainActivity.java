@@ -32,7 +32,6 @@ public class MainActivity extends StandardActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        UIUtils.loadMenuIcon(menu, R.id.post_item, IoniconsIcons.ion_android_add);
         UIUtils.loadMenuIcon(menu, R.id.view_profile, IoniconsIcons.ion_person);
         UIUtils.loadMenuIcon(menu, R.id.settings, IoniconsIcons.ion_android_settings);
         return true;
@@ -41,11 +40,6 @@ public class MainActivity extends StandardActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.post_item:
-                Intent openItemForm = new Intent(this, ItemFormActivity.class);
-                openItemForm.putExtra(ItemFormActivity.FORM_MODE_KEY, ItemFormActivity.ADD);
-                startActivity(openItemForm);
-                return true;
             case R.id.view_profile:
                 startActivity(new Intent(this, ProfileActivity.class));
                 return true;
