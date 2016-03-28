@@ -18,11 +18,13 @@
 
     <string name="lost">Lost &amp; Found - Lost</string>
     <string name="found">Lost &amp; Found - Found</string>
+    <string name="food_drink">Food/Drink</string>
     <string-array name="category_options">
         <item>@string/lost</item>
         <item>@string/found</item>
         <item>@string/school_supplies</item>
         <item>@string/household_items</item>
+        <item>@string/food_drink</item>
     </string-array>
 
     <string name="student_id">Student ID</string>
@@ -55,11 +57,25 @@
 
     <string name="furniture">Furniture</string>
     <string name="kitchen_supplies">Kitchen supplies</string>
-    <string name="food_drink">Food/drink</string>
     <string-array name="household_items_options">
         <item>@string/furniture</item>
         <item>@string/kitchen_supplies</item>
-        <item>@string/food_drink</item>
+        <item>@string/clothing</item>
+    </string-array>
+
+    <string name="convenience_food">Convenience food</string>
+    <string name="fruits">Fruits</string>
+    <string name="vegetables">Vegetables</string>
+    <string name="canned_food">Canned food</string>
+    <string name="carbs">Carbs</string>
+    <string name="drink">Drink</string>
+    <string-array name="food_drink_options">
+        <item>@string/convenience_food</item>
+        <item>@string/fruits</item>
+        <item>@string/vegetables</item>
+        <item>@string/canned_food</item>
+        <item>@string/carbs</item>
+        <item>@string/drink</item>
     </string-array>
 
     <string name="choose">Choose</string>

@@ -3,6 +3,7 @@ package com.randomappsinc.sturf.Activities;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -16,10 +17,10 @@ import android.widget.EditText;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.joanzapata.iconify.fonts.IoniconsIcons;
-import com.randomappsinc.sturf.Constants;
 import com.randomappsinc.sturf.Item;
 import com.randomappsinc.sturf.R;
 import com.randomappsinc.sturf.TagsCompletionView;
+import com.randomappsinc.sturf.Utils.Constants;
 import com.randomappsinc.sturf.Utils.ItemFormUtils;
 import com.randomappsinc.sturf.Utils.LocationUtils;
 import com.randomappsinc.sturf.Utils.PermissionUtils;
@@ -124,7 +125,13 @@ public class ItemFormActivity extends StandardActivity {
     public void autoFillAddress() {
         if (!PermissionUtils.isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
             PermissionUtils.requestPermission(this, Manifest.permission.ACCESS_FINE_LOCATION, LOCATION_ACCESS_CODE);
-        } else if (!LocationUtils.areLocationServicesOn()) {
+        } else {
+            processLocation();
+        }
+    }
+
+    private void processLocation() {
+        if (!LocationUtils.areLocationServicesOn()) {
             askToEnableLocation();
         } else {
             String currentAddress = LocationUtils.getCurrentAddress();
@@ -151,6 +158,19 @@ public class ItemFormActivity extends StandardActivity {
                     }
                 })
                 .show();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case LOCATION_ACCESS_CODE:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    processLocation();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 
     @Override

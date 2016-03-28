@@ -15,6 +15,8 @@ public class ItemFormUtils {
                 return R.array.school_supplies_options;
             case 3:
                 return R.array.household_items_options;
+            case 4:
+                return R.array.food_drink_options;
             default:
                 return R.array.lost_and_found_options;
         }

@@ -17,7 +17,7 @@
         Would you like to turn them on now?
     </string>
     <string name="location_fail">
-        Sorry, but we are unable to get your current location at this time.
+        Sorry, but we are unable to get your current location right now.
         Please try again later.
     </string>
 </resources>

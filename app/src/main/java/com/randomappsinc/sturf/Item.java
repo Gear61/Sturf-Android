@@ -17,6 +17,8 @@ public class Item implements Parcelable {
     private String location;
     private List<String> tags;
 
+    public Item() {}
+
     public String getImageUrl() {
         return imageUrl;
     }

@@ -1,4 +1,4 @@
-package com.randomappsinc.sturf;
+package com.randomappsinc.sturf.Utils;
 
 /**
  * Created by alexanderchiou on 3/13/16.
