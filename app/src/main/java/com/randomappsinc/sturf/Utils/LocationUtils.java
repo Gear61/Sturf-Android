@@ -38,4 +38,13 @@ public class LocationUtils {
         catch (SecurityException|IOException ignored) {}
         return "";
     }
+
+    public static boolean areLocationServicesOn() {
+        LocationManager locationManager = (LocationManager) MyApplication.getAppContext().getSystemService(Context.LOCATION_SERVICE);
+
+        boolean gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        boolean networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+        return gpsEnabled || networkEnabled;
+    }
 }

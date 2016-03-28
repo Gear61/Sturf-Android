@@ -1,6 +1,11 @@
 package com.randomappsinc.sturf.Activities;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -8,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.joanzapata.iconify.fonts.IoniconsIcons;
 import com.randomappsinc.sturf.Constants;
@@ -15,6 +21,8 @@ import com.randomappsinc.sturf.Item;
 import com.randomappsinc.sturf.R;
 import com.randomappsinc.sturf.TagsCompletionView;
 import com.randomappsinc.sturf.Utils.ItemFormUtils;
+import com.randomappsinc.sturf.Utils.LocationUtils;
+import com.randomappsinc.sturf.Utils.PermissionUtils;
 import com.randomappsinc.sturf.Utils.UIUtils;
 
 import butterknife.Bind;
@@ -25,11 +33,13 @@ import butterknife.OnClick;
  * Created by alexanderchiou on 3/2/16.
  */
 public class ItemFormActivity extends StandardActivity {
+    public static final int LOCATION_ACCESS_CODE = 1;
     public static final String FORM_MODE_KEY = "formMode";
     public static final String ITEM_KEY = "item";
     public static final String ADD = "add";
     public static final String UPDATE = "update";
 
+    @Bind(R.id.parent) View parent;
     @Bind(R.id.category) EditText category;
     @Bind(R.id.subcategory) EditText subcategory;
     @Bind(R.id.item_title) EditText title;
@@ -108,6 +118,39 @@ public class ItemFormActivity extends StandardActivity {
                     .negativeText(android.R.string.no)
                     .show();
         }
+    }
+
+    @OnClick(R.id.location_icon)
+    public void autoFillAddress() {
+        if (!PermissionUtils.isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
+            PermissionUtils.requestPermission(this, Manifest.permission.ACCESS_FINE_LOCATION, LOCATION_ACCESS_CODE);
+        } else if (!LocationUtils.areLocationServicesOn()) {
+            askToEnableLocation();
+        } else {
+            String currentAddress = LocationUtils.getCurrentAddress();
+            if (currentAddress.isEmpty()) {
+                UIUtils.showSnackbar(parent, getString(R.string.location_fail));
+            } else {
+                location.setText(currentAddress);
+                location.setSelection(currentAddress.length());
+            }
+        }
+    }
+
+    private void askToEnableLocation() {
+        final Context context = this;
+        new MaterialDialog.Builder(this)
+                .title(R.string.enable_location_services)
+                .content(R.string.location_services_explanation)
+                .positiveText(android.R.string.yes)
+                .negativeText(android.R.string.no)
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        context.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .show();
     }
 
     @Override

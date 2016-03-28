@@ -10,4 +10,14 @@
     <string name="search_hint">Search Sturf</string>
     <string name="search_icon">{ion-android-search}</string>
     <string name="clear_icon">{ion-android-close}</string>
+
+    <string name="enable_location_services">Enable Location Services</string>
+    <string name="location_services_explanation">
+        You need to enable location services, so we can figure out where you are.
+        Would you like to turn them on now?
+    </string>
+    <string name="location_fail">
+        Sorry, but we are unable to get your current location at this time.
+        Please try again later.
+    </string>
 </resources>

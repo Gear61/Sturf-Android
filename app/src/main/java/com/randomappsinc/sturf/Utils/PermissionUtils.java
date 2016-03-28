@@ -1,9 +1,7 @@
 package com.randomappsinc.sturf.Utils;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
@@ -17,14 +15,5 @@ public class PermissionUtils {
 
     public static boolean isPermissionGranted(String permission) {
         return ContextCompat.checkSelfPermission(MyApplication.getAppContext(), permission) == PackageManager.PERMISSION_GRANTED;
-    }
-
-    public static boolean isLocationEnabled() {
-        LocationManager locationManager = (LocationManager) MyApplication.getAppContext().getSystemService(Context.LOCATION_SERVICE);
-
-        boolean gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        boolean networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-
-        return gpsEnabled || networkEnabled;
     }
 }
