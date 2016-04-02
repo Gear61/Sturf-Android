@@ -61,15 +61,25 @@
             </LinearLayout>
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_500"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:background="@color/app_blue"
-            android:textColor="@color/white"
+            android:background="@color/gray_300"
+            android:textColor="@color/gray_700"
             android:textSize="18sp"
             android:text="@string/my_sturf"
             android:gravity="center_horizontal"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_500"/>
 
         <TextView
             android:id="@+id/no_sturf"

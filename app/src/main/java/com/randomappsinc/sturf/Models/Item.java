@@ -1,4 +1,4 @@
-package com.randomappsinc.sturf;
+package com.randomappsinc.sturf.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

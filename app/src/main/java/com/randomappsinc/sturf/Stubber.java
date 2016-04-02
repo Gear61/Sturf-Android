@@ -1,5 +1,7 @@
 package com.randomappsinc.sturf;
 
+import com.randomappsinc.sturf.Models.Item;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +21,11 @@ public class Stubber {
         items.add(book);
 
         Item pizza = new Item();
-        book.setTitle("Free Pizza");
-        book.setCategory("Food/Drink");
-        book.setSubcategory("Junk Food");
-        book.setLocation("Berkeley Sproul");
-        book.setImageUrl("http://troppa-nl.com/wp-content/uploads/2015/08/pizza-stock.jpg");
+        pizza.setTitle("Free Pizza");
+        pizza.setCategory("Food/Drink");
+        pizza.setSubcategory("Junk Food");
+        pizza.setLocation("Berkeley Sproul");
+        pizza.setImageUrl("http://troppa-nl.com/wp-content/uploads/2015/08/pizza-stock.jpg");
         items.add(pizza);
 
         return items;

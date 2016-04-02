@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
+import com.randomappsinc.sturf.Adapters.SettingsAdapter;
 import com.randomappsinc.sturf.R;
-import com.randomappsinc.sturf.SettingsAdapter;
 import com.randomappsinc.sturf.Utils.UIUtils;
 
 import butterknife.Bind;

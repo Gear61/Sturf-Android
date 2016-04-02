@@ -1,4 +1,4 @@
-package com.randomappsinc.sturf;
+package com.randomappsinc.sturf.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.joanzapata.iconify.widget.IconTextView;
+import com.randomappsinc.sturf.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

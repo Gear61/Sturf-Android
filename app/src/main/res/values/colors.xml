@@ -3,8 +3,12 @@
     <color name="app_blue">#2196F3</color>
     <color name="dark_blue">#1976D2</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 
     <color name="gray_700">#616161</color>
+    <color name="gray_500">#9E9E9E</color>
     <color name="gray_300">#E0E0E0</color>
     <color name="gray_200">#EEEEEE</color>
+
+    <color name="transparent_red">#DD2196F3</color>
 </resources>

@@ -13,11 +13,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.joanzapata.iconify.fonts.IoniconsIcons;
-import com.randomappsinc.sturf.Item;
+import com.randomappsinc.sturf.Models.Item;
+import com.randomappsinc.sturf.Persistence.PreferencesManager;
 import com.randomappsinc.sturf.R;
 import com.randomappsinc.sturf.TagsCompletionView;
 import com.randomappsinc.sturf.Utils.Constants;
@@ -25,6 +29,7 @@ import com.randomappsinc.sturf.Utils.ItemFormUtils;
 import com.randomappsinc.sturf.Utils.LocationUtils;
 import com.randomappsinc.sturf.Utils.PermissionUtils;
 import com.randomappsinc.sturf.Utils.UIUtils;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -41,12 +46,14 @@ public class ItemFormActivity extends StandardActivity {
     public static final String UPDATE = "update";
 
     @Bind(R.id.parent) View parent;
+    @Bind(R.id.image_form) View imageForm;
     @Bind(R.id.category) EditText category;
     @Bind(R.id.subcategory) EditText subcategory;
     @Bind(R.id.item_title) EditText title;
     @Bind(R.id.location) EditText location;
     @Bind(R.id.item_action) Button itemAction;
     @Bind(R.id.tags) TagsCompletionView tags;
+    @Bind(R.id.item_image) ImageView itemImage;
 
     private String mode;
     private int currentCategoryIndex = -1;
@@ -72,13 +79,30 @@ public class ItemFormActivity extends StandardActivity {
 
         tags.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, Constants.tags));
         tags.allowDuplicates(false);
+
+        if (PreferencesManager.get().shouldShowItemDemo()) {
+            new ShowcaseView.Builder(this)
+                    .withMaterialShowcase()
+                    .setContentText(getString(R.string.location_info))
+                    .setTarget(new ViewTarget(R.id.location_icon, this))
+                    .setStyle(R.style.showcase_theme)
+                    .build();
+        }
     }
 
     private void loadItem() {
         category.setText(item.getCategory());
+
         subcategory.setText(item.getSubcategory());
+        subcategory.setBackgroundResource(R.drawable.text_input_border);
+
         title.setText(item.getTitle());
         location.setText(item.getLocation());
+        if (item.getImageUrl() != null) {
+            imageForm.setVisibility(View.GONE);
+            Picasso.with(this).load(item.getImageUrl()).into(itemImage);
+            itemImage.setVisibility(View.VISIBLE);
+        }
     }
 
     @OnClick(R.id.category)
@@ -89,6 +113,7 @@ public class ItemFormActivity extends StandardActivity {
                 .itemsCallbackSingleChoice(currentCategoryIndex, new MaterialDialog.ListCallbackSingleChoice() {
                     @Override
                     public boolean onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                        subcategory.setBackgroundResource(R.drawable.text_input_border);
                         currentCategoryIndex = which;
                         category.setText(text);
                         currentSubcategoryIndex = -1;

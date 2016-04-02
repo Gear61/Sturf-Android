@@ -20,4 +20,7 @@
         Sorry, but we are unable to get your current location right now.
         Please try again later.
     </string>
+
+    <string name="location_info">Click the map marker icon to auto fill in your current location.</string>
+    <string name="got_it">Got it</string>
 </resources>

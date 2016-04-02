@@ -45,4 +45,5 @@ dependencies {
     compile "com.splitwise:tokenautocomplete:2.0.5@aar"
     compile 'com.squareup.retrofit2:retrofit:2.0.0'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+    compile 'com.github.amlcurran.showcaseview:library:5.4.1'
 }

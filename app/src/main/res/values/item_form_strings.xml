@@ -7,7 +7,7 @@
 
     <string name="post_item">Post Item</string>
     <string name="update_item">Update Item</string>
-    <string name="delete_posting">Delete posting</string>
+    <string name="delete_item">Delete item</string>
     
     <string name="photo_icon">{ion-image}</string>
     <string name="location_icon">{ion-location}</string>
