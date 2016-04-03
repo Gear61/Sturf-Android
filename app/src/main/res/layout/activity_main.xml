@@ -1,72 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/parent"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/white">
+    <include layout="@layout/drawer_layout"/>
 
-        <EditText
-            android:id="@+id/search_input"
-            style="@style/homepage_search"/>
-
-        <com.joanzapata.iconify.widget.IconTextView
-            android:text="@string/search_icon"
-            style="@style/homepage_search_icon"/>
-
-        <com.joanzapata.iconify.widget.IconTextView
-            android:id="@+id/clear_search"
-            android:text="@string/clear_icon"
-            android:layout_gravity="end"
-            style="@style/homepage_search_icon"/>
-    </FrameLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <FrameLayout style="@style/homepage_category">
-                <ImageView
-                    android:contentDescription="@string/lost_and_found"
-                    android:src="@drawable/lost_and_found"
-                    style="@style/homepage_image"/>
-
-                <TextView
-                    android:text="@string/lost_and_found"
-                    style="@style/homepage_item_title"/>
-            </FrameLayout>
-
-            <FrameLayout style="@style/homepage_category">
-                <ImageView
-                    android:contentDescription="@string/school_supplies"
-                    android:src="@drawable/school_supplies"
-                    style="@style/homepage_image"/>
-
-                <TextView
-                    android:text="@string/school_supplies"
-                    style="@style/homepage_item_title"/>
-            </FrameLayout>
-
-            <FrameLayout style="@style/homepage_category">
-                <ImageView
-                    android:contentDescription="@string/household_items"
-                    android:src="@drawable/household_items"
-                    style="@style/homepage_image"/>
-
-                <TextView
-                    android:text="@string/household_items"
-                    style="@style/homepage_item_title"/>
-            </FrameLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"/>
+</android.support.design.widget.CoordinatorLayout>

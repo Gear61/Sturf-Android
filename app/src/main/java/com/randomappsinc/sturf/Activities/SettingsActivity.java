@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-import com.randomappsinc.sturf.Adapters.SettingsAdapter;
+import com.randomappsinc.sturf.Adapters.IconItemsAdapter;
 import com.randomappsinc.sturf.R;
 import com.randomappsinc.sturf.Utils.UIUtils;
 
@@ -33,7 +33,7 @@ public class SettingsActivity extends StandardActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        settingsOptions.setAdapter(new SettingsAdapter(this));
+        settingsOptions.setAdapter(new IconItemsAdapter(this, R.array.settings_options, R.array.settings_icons));
     }
 
     @OnItemClick(R.id.settings_options)

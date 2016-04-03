@@ -16,15 +16,15 @@ import butterknife.ButterKnife;
 /**
  * Created by alexanderchiou on 3/2/16.
  */
-public class SettingsAdapter extends BaseAdapter {
+public class IconItemsAdapter extends BaseAdapter {
+    private Context context;
     private String[] itemNames;
     private String[] itemIcons;
-    private Context context;
 
-    public SettingsAdapter(Context context) {
+    public IconItemsAdapter(Context context, int optionIds, int iconIds) {
         this.context = context;
-        this.itemNames = context.getResources().getStringArray(R.array.settings_options);
-        this.itemIcons = context.getResources().getStringArray(R.array.settings_icons);
+        this.itemNames = context.getResources().getStringArray(optionIds);
+        this.itemIcons = context.getResources().getStringArray(iconIds);
     }
 
     @Override
@@ -39,28 +39,28 @@ public class SettingsAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
-    public class SettingsViewHolder {
-        @Bind(R.id.icon) IconTextView itemIcon;
-        @Bind(R.id.option) TextView itemName;
+    public class IconItemViewHolder {
+        @Bind(R.id.item_icon) IconTextView itemIcon;
+        @Bind(R.id.item_name) TextView itemName;
 
-        public SettingsViewHolder(View view) {
+        public IconItemViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
 
     public View getView(int position, View view, ViewGroup parent) {
-        SettingsViewHolder holder;
+        IconItemViewHolder holder;
         if (view == null) {
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = vi.inflate(R.layout.settings_list_item, parent, false);
-            holder = new SettingsViewHolder(view);
+            view = vi.inflate(R.layout.icon_item_cell, parent, false);
+            holder = new IconItemViewHolder(view);
             view.setTag(holder);
         }
         else {
-            holder = (SettingsViewHolder) view.getTag();
+            holder = (IconItemViewHolder) view.getTag();
         }
 
         holder.itemName.setText(itemNames[position]);

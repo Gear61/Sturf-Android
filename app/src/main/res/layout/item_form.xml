@@ -88,7 +88,7 @@
 
                 <com.joanzapata.iconify.widget.IconTextView
                     android:id="@+id/location_icon"
-                    android:text="@string/location_icon"
+                    android:text="@string/profile_icon"
                     android:textColor="@color/app_blue"
                     android:textSize="28dp"
                     android:layout_width="35dp"

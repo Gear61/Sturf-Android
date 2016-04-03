@@ -10,7 +10,6 @@
     <string name="delete_item">Delete item</string>
     
     <string name="photo_icon">{ion-image}</string>
-    <string name="location_icon">{ion-location}</string>
     <string name="photo_instructions">Click here to add a photo</string>
 
     <string name="category">Category</string>

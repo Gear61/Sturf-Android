@@ -22,8 +22,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:src="@drawable/lost_and_found"/>
+                android:layout_height="75dp"/>
 
             <LinearLayout
                 android:layout_marginLeft="@dimen/default_padding"
@@ -70,8 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:background="@color/gray_300"
-            android:textColor="@color/gray_700"
+            android:background="@color/app_blue"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:text="@string/my_sturf"
             android:gravity="center_horizontal"/>
@@ -93,8 +92,7 @@
 
         <ListView
             android:id="@+id/my_sturf"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            style="@style/items_list"/>
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
