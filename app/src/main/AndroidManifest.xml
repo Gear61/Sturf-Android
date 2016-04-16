@@ -41,5 +41,10 @@
             android:label="@string/item_form"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".Activities.SearchActivity"
+            android:label="@string/search"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 </manifest>

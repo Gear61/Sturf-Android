@@ -13,11 +13,16 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.randomappsinc.sturf.Adapters.IconItemsAdapter;
+import com.randomappsinc.sturf.Models.UserInfo;
+import com.randomappsinc.sturf.Persistence.PreferencesManager;
 import com.randomappsinc.sturf.R;
+import com.squareup.picasso.Picasso;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,12 +39,11 @@ public class NavigationDrawerFragment extends Fragment {
     private DrawerLayout mDrawerLayout;
     private View mFragmentContainerView;
 
-    @Bind(R.id.nav_drawer_tabs)
-    ListView mDrawerListView;
+    @Bind(R.id.nav_drawer_tabs) ListView mDrawerListView;
+    @Bind(R.id.profile_image) ImageView profilePicture;
+    @Bind(R.id.user_name) TextView userName;
 
     private int mCurrentSelectedPosition = 0;
-
-    public NavigationDrawerFragment() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,11 +61,25 @@ public class NavigationDrawerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        LinearLayout navDrawer = (LinearLayout) inflater.inflate(R.layout.navigation_drawer_fragment, container, false);
+        LinearLayout navDrawer = (LinearLayout) inflater.inflate(R.layout.navigation_drawer_fragment,
+                container, false);
         ButterKnife.bind(this, navDrawer);
-        mDrawerListView.setAdapter(new IconItemsAdapter(getActivity(), R.array.nav_drawer_tabs, R.array.nav_drawer_icons));
+        mDrawerListView.setAdapter(new IconItemsAdapter(getActivity(),
+                R.array.nav_drawer_tabs, R.array.nav_drawer_icons));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return navDrawer;
+    }
+
+    public void loadProfileInfo() {
+        UserInfo currentUser = PreferencesManager.get().getCurrentUser();
+        Picasso.with(getActivity()).load(currentUser.getProfilePictureUrl()).into(profilePicture);
+        userName.setText(currentUser.getName());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadProfileInfo();
     }
 
     @OnItemClick(R.id.nav_drawer_tabs)

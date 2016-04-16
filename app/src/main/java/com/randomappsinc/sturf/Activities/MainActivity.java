@@ -1,5 +1,6 @@
 package com.randomappsinc.sturf.Activities;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,15 +11,18 @@ import android.view.MenuItem;
 
 import com.joanzapata.iconify.IconDrawable;
 import com.joanzapata.iconify.fonts.IoniconsIcons;
+import com.randomappsinc.sturf.Fragments.HomeFeedFragment;
 import com.randomappsinc.sturf.Fragments.NavigationDrawerFragment;
 import com.randomappsinc.sturf.R;
 import com.randomappsinc.sturf.Utils.UIUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     @Bind(R.id.add_item) FloatingActionButton addItem;
+    @Bind(R.id.drawer_layout) DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +37,19 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerF
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
-        // Set up the drawer.
-        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, drawer);
 
-//        FragmentManager fragmentManager = getFragmentManager();
-//        FoodFeedFragment foodFeedFragment = new FoodFeedFragment();
-//        fragmentManager.beginTransaction().replace(R.id.container, foodFeedFragment).commit();
+        FragmentManager fragmentManager = getFragmentManager();
+        HomeFeedFragment homeFeedFragment = new HomeFeedFragment();
+        fragmentManager.beginTransaction().replace(R.id.container, homeFeedFragment).commit();
+    }
+
+    @OnClick(R.id.add_item)
+    public void postItem() {
+        drawer.closeDrawers();
+        Intent intent = new Intent(this, ItemFormActivity.class);
+        intent.putExtra(ItemFormActivity.FORM_MODE_KEY, ItemFormActivity.ADD);
+        startActivity(intent);
     }
 
     @Override
@@ -77,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerF
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.search) {
+            drawer.closeDrawers();
+            startActivity(new Intent(this, SearchActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

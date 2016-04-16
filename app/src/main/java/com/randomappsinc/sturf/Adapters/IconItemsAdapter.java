@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.joanzapata.iconify.widget.IconTextView;
 import com.randomappsinc.sturf.R;
 
 import butterknife.Bind;
@@ -43,7 +42,7 @@ public class IconItemsAdapter extends BaseAdapter {
     }
 
     public class IconItemViewHolder {
-        @Bind(R.id.item_icon) IconTextView itemIcon;
+        @Bind(R.id.item_icon) TextView itemIcon;
         @Bind(R.id.item_name) TextView itemName;
 
         public IconItemViewHolder(View view) {
@@ -69,4 +68,3 @@ public class IconItemsAdapter extends BaseAdapter {
         return view;
     }
 }
-

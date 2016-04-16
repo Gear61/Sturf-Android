@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -19,10 +20,10 @@
             android:layout_height="75dp"/>
 
         <TextView
-            android:id="@+id/user_tag"
-            android:textSize="22sp"
+            android:id="@+id/user_name"
+            android:textSize="18sp"
             android:textColor="@color/gray_700"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
