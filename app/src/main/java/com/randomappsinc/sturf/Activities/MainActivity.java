@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerF
         Intent intent = null;
         switch (position) {
             case 0:
+                intent = new Intent(this, ProfileActivity.class);
                 break;
             case 1:
                 break;

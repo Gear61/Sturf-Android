@@ -3,5 +3,11 @@
     <string name="user_icon">{ion-person}</string>
     <string name="school_icon">{ion-university}</string>
 
+    <string name="save_profile">Save profile</string>
+
     <string name="no_sturf">You don\'t have any posted items.</string>
+
+    <string name="name">Name</string>
+    <string name="school">School</string>
+    <string name="email">Email</string>
 </resources>

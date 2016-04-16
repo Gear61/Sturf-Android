@@ -49,8 +49,8 @@ public class PreferencesManager {
 
     public void setUserInfo(UserInfo userInfo) {
         prefs.edit().putString(USER_NAME_KEY, userInfo.getName()).apply();
-        prefs.edit().putString(EMAIL_KEY, userInfo.getName()).apply();
-        prefs.edit().putString(SCHOOL_KEY, userInfo.getName()).apply();
-        prefs.edit().putString(PROFILE_PICTURE_URL_KEY, userInfo.getProfilePictureUrl());
+        prefs.edit().putString(EMAIL_KEY, userInfo.getEmail()).apply();
+        prefs.edit().putString(SCHOOL_KEY, userInfo.getSchool()).apply();
+        prefs.edit().putString(PROFILE_PICTURE_URL_KEY, userInfo.getProfilePictureUrl()).apply();
     }
 }

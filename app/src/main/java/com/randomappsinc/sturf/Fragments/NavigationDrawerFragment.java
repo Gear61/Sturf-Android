@@ -72,7 +72,9 @@ public class NavigationDrawerFragment extends Fragment {
 
     public void loadProfileInfo() {
         UserInfo currentUser = PreferencesManager.get().getCurrentUser();
-        Picasso.with(getActivity()).load(currentUser.getProfilePictureUrl()).into(profilePicture);
+        Picasso.with(getActivity())
+                .load(currentUser.getProfilePictureUrl())
+                .into(profilePicture);
         userName.setText(currentUser.getName());
     }
 
