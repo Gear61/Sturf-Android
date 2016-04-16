@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerF
                 intent = new Intent(this, ProfileActivity.class);
                 break;
             case 1:
+                intent = new Intent(this, MySturfActivity.class);
                 break;
             case 2:
                 intent = new Intent(this, SettingsActivity.class);

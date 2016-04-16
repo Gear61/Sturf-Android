@@ -2,4 +2,9 @@
 <resources>
     <string name="search_icon">{ion-android-search}</string>
     <string name="no_items">No items to display.</string>
+
+    <string name="do_search">Apply filters and search</string>
+    <string name="reset_filters">Reset filters</string>
+
+    <string name="search_hint">What are you looking for?</string>
 </resources>
